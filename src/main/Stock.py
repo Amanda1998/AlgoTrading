@@ -1,6 +1,5 @@
 from pandas_datareader import data
 
-
 class Stock:
 
     def __init__(self, ticker, startDate, endDate, source='yahoo'):
@@ -35,7 +34,6 @@ class Stock:
     def diff(self):
         return self.open() - self.close()
 
-
 if __name__ == '__main__':
-    apple = Stock('AAPL','2010-01-01','2012-12-31')
-    print(apple.volume())
+    apple = Stock('AAPL','2006-10-01', '2012-01-01')
+    print(apple.close())

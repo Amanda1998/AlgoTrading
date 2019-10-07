@@ -33,9 +33,17 @@ class Visualization:
         plt.show()
         print(cum_return)
 
+    def rollingWindow(self,window_period):
+        self.stock.close().plot()
+        self.analysis.rollingAdjClose(window_period).plot()
+        plt.show()
+
+
+
 
 if __name__ == '__main__':
     from src.main.Stock import Stock
-    apple = Stock('AAPL', '2010-01-01', '2012-12-31')
+    apple = Stock('AAPL', '2006-10-01', '2012-01-01')
     v1 = Visualization(apple)
-    v1.cumulativeReturns('monthly')
+    # v1.cumulativeReturns('monthly')
+    v1.rollingWindow(42)
