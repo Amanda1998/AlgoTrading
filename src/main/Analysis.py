@@ -31,6 +31,11 @@ class Analysis:
     def rollingClose(self,window_period,min_periods):
         return self.stock.close().rolling(window=window_period,min_periods=min_periods,center=False).mean()
 
+    def sharpRatio(self):
+        returns = self.dailyPctChange()['Adj Close']
+        sharpe_ratio = np.sqrt(252) * (returns.mean() / returns.std())
+        return sharpe_ratio
+
 
 if __name__ == '__main__':
     from src.main.Stock import Stock
@@ -40,5 +45,6 @@ if __name__ == '__main__':
     dailyChange = a1.dailyPctChange()
     monthlyChange = a1.monthlyPctChange()
     quarterChange = a1.quarterPctChange()
-    print(a1.rollingAdjClose(40))
+    # print(a1.rollingAdjClose(40))
+    print(a1.sharpRatio())
     # print(a1.logReturns(dailyChange))
